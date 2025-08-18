@@ -17,7 +17,25 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            Text("Count \(books.count)")
+            //MARK: - Building a list with @Query -> Delete thit line of code after creatde EmojiRatingView
+            //Text("Count \(books.count)")
+            List {
+                ForEach(books) { book in
+                    NavigationLink(value: book) {
+                        HStack {
+                            EmojiRatingView(rating: book.rating)
+                                .font(.title)
+                            
+                            VStack(alignment: .leading) {
+                                Text(book.title)
+                                    .font(.headline)
+                                Text(book.author)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+            }
                 .navigationTitle("Bookworm")
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
