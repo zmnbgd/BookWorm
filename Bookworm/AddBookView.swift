@@ -46,10 +46,18 @@ struct AddBookView: View {
                 }
                 Section {
                     Button("Save") {
-                        let newBook = Book(title: title, author: author, genre: genre, review: review, rating: rating)
+                        //MARK: - Challenge 1., Project 11: Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
+                        let newBook = Book(
+                            title: title.trimmingCharacters(in: .whitespacesAndNewlines),
+                            author: author.trimmingCharacters(in: .whitespacesAndNewlines),
+                            genre: genre.isEmpty ? "Unknown" : genre,
+                            review: review,
+                            rating: rating
+                        )
                         modelContext.insert(newBook)
                         dismiss()
                     }
+                    .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || author.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
             .navigationTitle("Add Book")

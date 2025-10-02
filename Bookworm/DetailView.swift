@@ -19,11 +19,13 @@ struct DetailView: View {
     var body: some View {
         ScrollView {
             ZStack(alignment: .bottomTrailing) {
-                Image(book.genre)
+                //MARK: - Challenge 1., Project 11: Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
+                Image(book.genre.isEmpty ? "Unknown" : book.genre)
                     .resizable()
                     .scaledToFit()
                 
-                Text(book.genre.uppercased())
+                //MARK: - Challenge 1., Project 11: Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
+                Text(book.genre.isEmpty ? "UNKNOWN" : book.genre.uppercased())
                     .fontWeight(.black)
                     .padding(8)
                     .foregroundStyle(.white)
