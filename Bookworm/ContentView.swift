@@ -33,6 +33,8 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title)
                                     .font(.headline)
+                                //MARK: - Challenge 2., Project 11: Modify ContentView so that books rated as 1 star are highlighted somehow, such as having their name shown in red.
+                                    .foregroundStyle(book.rating == 1 ? .red : .primary)
                                 Text(book.author)
                                     .foregroundStyle(.secondary)
                             }
