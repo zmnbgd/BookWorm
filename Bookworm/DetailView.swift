@@ -34,6 +34,11 @@ struct DetailView: View {
                     .offset(x: -5, y: -5)
             }
             Text(book.author)
+            //MARK: - Challenge 3. Add a new “date” attribute to the Book class, assigning Date.now to it so it gets the current date and time, then format that nicely somewhere in DetailView
+            Text("Added on \(book.date.formatted(date: .long, time: .shortened))")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 5)
                 .font(.title)
                 .foregroundStyle(.secondary)
             

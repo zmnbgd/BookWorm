@@ -52,7 +52,9 @@ struct AddBookView: View {
                             author: author.trimmingCharacters(in: .whitespacesAndNewlines),
                             genre: genre.isEmpty ? "Unknown" : genre,
                             review: review,
-                            rating: rating
+                            rating: rating,
+                            //MARK: - Challenge 3. Add a new “date” attribute to the Book class, assigning Date.now to it so it gets the current date and time, then format that nicely somewhere in DetailView
+                            date: .now
                         )
                         modelContext.insert(newBook)
                         dismiss()
